@@ -1,0 +1,21 @@
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import LogIn from './pages/LogIn'
+
+function App() {
+  return (
+    <div className="min-h-screen bg-slate-100">
+      <Navbar />
+      <main className="max-w-5xl mx-auto p-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="*" element={<h1 className="text-2xl">Page not found</h1>} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
+
+export default App
