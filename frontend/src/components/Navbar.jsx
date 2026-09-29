@@ -9,6 +9,19 @@ function Navbar() {
         <NavLink to="/" end className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
           Home
         </NavLink>
+        {/* TEMP PREVIEW ONLY - not committed */}
+        <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          Dashboard
+        </NavLink>
+        <NavLink to="/join-queue" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          Join Queue
+        </NavLink>
+        <NavLink to="/queue-status" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          Queue Status
+        </NavLink>
+        <NavLink to="/history" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          History
+        </NavLink>
         <NavLink to="/login" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
           Log In
         </NavLink>
