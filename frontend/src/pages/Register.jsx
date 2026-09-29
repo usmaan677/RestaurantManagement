@@ -1,18 +1,21 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function LogIn() {
+function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('Logging in with:', email, password)
+    console.log('Registering with:', email, password)
   }
 
   return (
     <div className="max-w-sm mx-auto">
-      <h1 className="text-3xl font-bold text-slate-800">Log In</h1>
+      <h1 className="text-3xl font-bold text-slate-800">Welcome!</h1>
+      <p className="mt-2 text-slate-600">
+        Create an account to get started. Your email will be your username.
+      </p>
 
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
         <div>
@@ -47,17 +50,17 @@ function LogIn() {
           type="submit"
           className="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
         >
-          Log In
+          Register
         </button>
       </form>
       <p className="mt-4 text-sm text-slate-600">
-        Don't have an account?{' '}
-        <Link to="/register" className="text-blue-600 hover:underline">
-          Register
+        Already have an account?{' '}
+        <Link to="/login" className="text-blue-600 hover:underline">
+          Log In
         </Link>
       </p>
     </div>
   )
 }
 
-export default LogIn
+export default Register

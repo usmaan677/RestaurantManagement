@@ -1,27 +1,18 @@
 import { NavLink } from 'react-router-dom'
 
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/login', label: 'Log In' },
-]
-
 function Navbar() {
   return (
-    <nav className="bg-slate-800 px-6 py-4">
-      <ul className="flex gap-6">
-        {links.map(({ to, label }) => (
-          <li key={to}>
-            <NavLink
-              to={to}
-              className={({ isActive }) =>
-                isActive ? 'text-white font-semibold' : 'text-slate-300 hover:text-white'
-              }
-            >
-              {label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav className="flex items-center justify-between bg-white border-b border-slate-200 px-6 py-4">
+      <span className="text-lg font-bold text-slate-800">Restaurant Manager</span>
+
+      <div className="flex gap-6">
+        <NavLink to="/" end className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          Home
+        </NavLink>
+        <NavLink to="/login" className={({ isActive }) => isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>
+          Log In
+        </NavLink>
+      </div>
     </nav>
   )
 }
