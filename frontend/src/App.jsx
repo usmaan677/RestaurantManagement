@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard'
 import JoinQueue from './pages/JoinQueue'
 import QueueStatus from './pages/QueueStatus'
 import History from './pages/History'
+import AdminDashboard from './pages/AdminDashboard'
+import ServiceManagement from './pages/ServiceManagement'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/join-queue" element={<JoinQueue />} />
           <Route path="/queue-status" element={<QueueStatus />} />
           <Route path="/history" element={<History />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/services" element={<ServiceManagement />} />
           <Route path="*" element={<h1 className="text-2xl">Page not found</h1>} />
         </Routes>
       </main>
