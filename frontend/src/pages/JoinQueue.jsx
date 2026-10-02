@@ -3,14 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { services } from '../mockData'
 
 function JoinQueue() {
+  // The id of the service picked in the dropdown ('' means nothing picked yet)
   const [selectedId, setSelectedId] = useState('')
+  // Error message shown under the dropdown
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
+  // Find the full service object for the picked id (undefined if none picked)
   const selectedService = services.find((s) => s.id === Number(selectedId))
 
   function handleJoin(e) {
-    e.preventDefault()
+    e.preventDefault() // stop the browser from reloading the page
 
     if (!selectedId) {
       setError('Please select a service before joining a queue.')
@@ -18,6 +21,7 @@ function JoinQueue() {
     }
 
     setError('')
+    // Go to the status page and tell it which service was chosen
     navigate('/queue-status', { state: { serviceId: Number(selectedId) } })
   }
 
@@ -38,6 +42,7 @@ function JoinQueue() {
             className="mt-1 w-full rounded border border-slate-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
           >
             <option value="">Select a service</option>
+            {/* One option for every service in the mock data */}
             {services.map((service) => (
               <option key={service.id} value={service.id}>
                 {service.name}
@@ -47,6 +52,7 @@ function JoinQueue() {
           {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
         </div>
 
+        {/* Details only appear once a service is picked */}
         {selectedService && (
           <div className="rounded border border-slate-200 bg-white p-3">
             <p className="text-slate-700">{selectedService.description}</p>

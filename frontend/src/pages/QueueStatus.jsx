@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { services } from '../mockData'
+import { services, currentQueueId } from '../mockData'
 
 function QueueStatus() {
+  // If the user just came from "Join Queue", show that service.
+  // Otherwise (e.g. page refresh) show the queue from the mock data.
   const location = useLocation()
-  const serviceId = location.state?.serviceId ?? services[0].id
+  const serviceId = location.state?.serviceId ?? currentQueueId
   const service = services.find((s) => s.id === serviceId)
 
+  // true after the user clicks "Leave Queue"
   const [left, setLeft] = useState(false)
 
+  // Not in a queue: show a short message with a link to join one
   if (!service || left) {
     return (
       <div className="max-w-md mx-auto text-center">
