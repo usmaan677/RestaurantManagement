@@ -1,25 +1,34 @@
 import { Link } from 'react-router-dom'
-import { services, notifications } from '../mockData'
+import { services, notifications, currentQueueId } from '../mockData'
 
 function Dashboard() {
-  const currentQueue = services[0]
+  // Look up the queue the user is in from the mock data
+  const currentQueue = services.find((service) => service.id === currentQueueId)
 
   return (
     <div>
       <h1 className="text-3xl font-bold text-slate-800">Dashboard</h1>
       <p className="mt-2 text-slate-600">Here's what's happening with your orders.</p>
 
+      {/* Current queue: only shown if the user is in one */}
       <div className="mt-6 rounded border border-slate-200 bg-white p-4">
         <h2 className="text-lg font-semibold text-slate-800">Current Queue</h2>
-        <p className="mt-1 text-slate-600">
-          You are in line for <span className="font-medium">{currentQueue.name}</span> — position #
-          {currentQueue.position}, about {currentQueue.waitTime} minutes.
-        </p>
-        <Link to="/queue-status" className="mt-2 inline-block text-blue-600 hover:underline">
-          View queue status
-        </Link>
+        {currentQueue ? (
+          <>
+            <p className="mt-1 text-slate-600">
+              You are in line for <span className="font-medium">{currentQueue.name}</span> — position #
+              {currentQueue.position}, about {currentQueue.waitTime} minutes.
+            </p>
+            <Link to="/queue-status" className="mt-2 inline-block text-blue-600 hover:underline">
+              View queue status
+            </Link>
+          </>
+        ) : (
+          <p className="mt-1 text-slate-600">You are not in a queue right now.</p>
+        )}
       </div>
 
+      {/* One row for every service in the mock data */}
       <div className="mt-6 rounded border border-slate-200 bg-white p-4">
         <h2 className="text-lg font-semibold text-slate-800">Active Services</h2>
         <ul className="mt-2 flex flex-col gap-2">
@@ -37,6 +46,7 @@ function Dashboard() {
         </ul>
       </div>
 
+      {/* One row for every notification in the mock data */}
       <div className="mt-6 rounded border border-slate-200 bg-white p-4">
         <h2 className="text-lg font-semibold text-slate-800">Notifications</h2>
         <ul className="mt-2 flex flex-col gap-2">

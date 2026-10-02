@@ -27,6 +27,9 @@ export const services = [
   },
 ]
 
+// The queue the user is currently waiting in (matches a service id above).
+export const currentQueueId = 1
+
 export const notifications = [
   { id: 1, message: 'Your Dine In queue position moved up to #3.', time: '2 mins ago' },
   { id: 2, message: 'Take Out orders are almost ready.', time: '10 mins ago' },
